@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/10 17:14:57 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/10 17:34:27 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ typedef struct s_options
 /* check_arg.c */
 
 void	check_arg(int ac, char **av);
+
+/* set_opt.c */
+
+void	set_opts(int ac, char **av, t_options *opts);
 
 /* finish_error */
 
