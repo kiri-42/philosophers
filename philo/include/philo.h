@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 00:14:38 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 01:08:48 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 
 # include "../libft/libft.h"
 # include <stdio.h>
+# include <sys/time.h>
 
 # define ERROR 1
+
+# define TAKEAFORK	"has taken a fork"
+# define EATING		"is eating"
+# define SLEEPING	"is sleeping"
+# define THINKING	"is thinking"
+# define DIED		"died"
 
 typedef struct s_options
 {
@@ -34,17 +41,25 @@ typedef struct s_management_data
 
 /* check_arg.c */
 
-void	check_arg(int ac, char **av);
+void		check_arg(int ac, char **av);
 
 /* set_opt.c */
 
-void	set_opts(int ac, char **av, t_options *opts);
+void		set_opts(int ac, char **av, t_options *opts);
 
 /* run_simulation.c */
-void	run_simulation(t_management_data *mdata);
+void		run_simulation(t_management_data *mdata);
+
+/* finish_died.c */
+
+void		finish_died(int philo_id);
+
+/* get_ms.c */
+
+long long	get_ms(struct timeval time);
 
 /* finish_error */
 
-void	finish_error(char *error_message);
+void		finish_error(char *error_message);
 
 #endif

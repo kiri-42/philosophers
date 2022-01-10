@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run_simulation.c                                   :+:      :+:    :+:   */
+/*   finish_died.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 00:08:25 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 01:10:38 by tkirihar         ###   ########.fr       */
+/*   Created: 2022/01/11 00:31:12 by tkirihar          #+#    #+#             */
+/*   Updated: 2022/01/11 00:53:47 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	run_simulation(t_management_data *mdata)
+void	finish_died(int philo_id)
 {
-	if (mdata->opts.num_of_philos == 1)
-		finish_died(1);
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	printf("%lld %d %s\n", get_ms(time), philo_id, DIED);
+	exit(0);
 }
