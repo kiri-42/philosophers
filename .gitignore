@@ -1,0 +1,18 @@
+*
+
+# philosophers/
+!.gitignore
+
+# philo/
+!philo/Makefile
+
+# philo/srcs/
+!philo/srcs/*.c
+
+# philo/include/
+!philo/include/*.h
+
+# philo/libft/
+!philo/libft/*.[ch]
+!philo/libft/Makefile
+
