@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arg.c                                        :+:      :+:    :+:   */
+/*   finish_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 15:41:35 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/10 15:56:38 by tkirihar         ###   ########.fr       */
+/*   Created: 2022/01/10 15:50:28 by tkirihar          #+#    #+#             */
+/*   Updated: 2022/01/10 15:55:23 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	check_arg(int ac, char **av)
+int	finish_error(char *error_message)
 {
-	if (!(ac == 5 || ac == 6))
-		exit(finish_error("the number of options is incorrect"));
+	ft_putstr_fd("\x1b[31mError: \x1b[39m", STDERR_FILENO);
+	ft_putendl_fd(error_message, STDERR_FILENO);
+	return (ERROR);
 }
