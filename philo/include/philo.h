@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/10 19:33:36 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/10 23:59:15 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ typedef struct s_options
 	int	time_to_sleep;
 	int	num_of_must_eat;
 }	t_options;
+
+typedef struct s_management_data
+{
+	t_options	opts;
+}	t_management_data;
 
 /* check_arg.c */
 
