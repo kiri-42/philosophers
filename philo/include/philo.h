@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/10 17:34:27 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:33:36 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 
 typedef struct s_options
 {
-	int	philosophers;
+	int	num_of_philos;
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
-	int	times_must_eat;
+	int	num_of_must_eat;
 }	t_options;
 
 /* check_arg.c */
