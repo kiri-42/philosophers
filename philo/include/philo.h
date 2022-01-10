@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/10 16:58:27 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/10 17:14:57 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 # include <stdio.h>
 
 # define ERROR 1
+
+typedef struct s_options
+{
+	int	philosophers;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
+	int	times_must_eat;
+}	t_options;
 
 /* check_arg.c */
 
