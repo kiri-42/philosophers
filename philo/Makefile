@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/11 01:09:56 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/11 01:45:30 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = 		philo
 
 SRCS = 		srcs/main.c \
 			srcs/check_arg.c \
-			srcs/set_opts.c \
+			srcs/set_mdata.c \
 			srcs/run_simulation.c \
 			srcs/finish_died.c \
 			srcs/get_ms.c \
