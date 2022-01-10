@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/10 17:34:54 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/11 00:25:29 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = 		philo
 SRCS = 		srcs/main.c \
 			srcs/check_arg.c \
 			srcs/set_opts.c \
+			srcs/run_simulation.c \
 			srcs/finish_error.c
 
 OBJS = 		$(SRCS:.c=.o)

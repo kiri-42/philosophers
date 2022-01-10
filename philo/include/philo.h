@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/10 23:59:15 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 00:14:38 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	check_arg(int ac, char **av);
 /* set_opt.c */
 
 void	set_opts(int ac, char **av, t_options *opts);
+
+/* run_simulation.c */
+void	run_simulation(t_management_data *mdata);
 
 /* finish_error */
 
