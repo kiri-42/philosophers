@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 00:08:25 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 02:51:57 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 15:45:58 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	philo_action(t_management_data *mdata)
 {
-	int	philo_id;
+	int				philo_id;
+	struct timeval	time;
 
 	pthread_mutex_lock(&mdata->philo_id_mutex);
 	philo_id = mdata->philo_id++;
@@ -23,9 +24,9 @@ static void	philo_action(t_management_data *mdata)
 		usleep(200);
 	while (1)
 	{
-		eat_action();
-		sleep_action();
-		think_action();
+		eat_action(mdata, philo_id, &time);
+		// sleep_action();
+		// think_action();
 	}
 }
 

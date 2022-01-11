@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 02:41:06 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 15:56:05 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ void	set_mdata(int ac, char **av, t_management_data *mdata)
 		= (pthread_t *)malloc(sizeof(pthread_t) * mdata->opts.num_of_philos);
 	if (mdata->philo_treads == NULL)
 		finish_error("malloc");
+	mdata->fork_mutex
+		= (pthread_t *)malloc(sizeof(pthread_t) * \
+			(mdata->opts.num_of_philos + 1));
+	if (mdata->philo_treads == NULL)
+	{
+		free(&mdata->philo_treads);
+		finish_error("malloc");
+	}
 	mdata->philo_id = 1;
 	pthread_mutex_init(&mdata->philo_id_mutex, NULL);
 }

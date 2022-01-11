@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 14:59:41 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 15:55:22 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_management_data
 	t_options		opts;
 	pthread_t		*philo_treads;
 	pthread_mutex_t	philo_id_mutex;
+	pthread_mutex_t	*fork_mutex;
 	int				philo_id;
 }	t_management_data;
 
@@ -57,7 +58,10 @@ void		run_simulation(t_management_data *mdata);
 
 /* action_list.c */
 
-
+void		eat_action(t_management_data *mdata, int philo_id, \
+						struct timeval *time);
+// void	sleep_action();
+// void	think_action();
 
 /* finish_died.c */
 
