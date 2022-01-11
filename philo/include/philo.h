@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 01:45:24 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 14:59:41 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include <stdio.h>
+# include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
 
@@ -37,8 +38,10 @@ typedef struct s_options
 
 typedef struct s_management_data
 {
-	t_options	opts;
-	pthread_t	*philo_treads;
+	t_options		opts;
+	pthread_t		*philo_treads;
+	pthread_mutex_t	philo_id_mutex;
+	int				philo_id;
 }	t_management_data;
 
 /* check_arg.c */
@@ -51,6 +54,10 @@ void		set_mdata(int ac, char **av, t_management_data *mdata);
 
 /* run_simulation.c */
 void		run_simulation(t_management_data *mdata);
+
+/* action_list.c */
+
+
 
 /* finish_died.c */
 
