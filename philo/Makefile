@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/11 01:45:30 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/11 16:23:56 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ SRCS = 		srcs/main.c \
 			srcs/check_arg.c \
 			srcs/set_mdata.c \
 			srcs/run_simulation.c \
+			srcs/action_list.c \
+			srcs/put_log.c \
 			srcs/finish_died.c \
 			srcs/get_ms.c \
 			srcs/finish_error.c

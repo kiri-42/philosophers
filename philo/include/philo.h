@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 16:04:47 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:53:16 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PHILO_H
 
 # include "../libft/libft.h"
+# include "color.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <pthread.h>
@@ -21,11 +22,21 @@
 
 # define ERROR 1
 
-# define TAKEAFORK	"has taken a fork"
-# define EATING		"is eating"
-# define SLEEPING	"is sleeping"
-# define THINKING	"is thinking"
-# define DIED		"died"
+/* log_message_list */
+# define TAKEAFORK_M	"has taken a fork"
+# define EATING_M		"is eating"
+# define SLEEPING_M		"is sleeping"
+# define THINKING_M		"is thinking"
+# define DIED_M			"died"
+
+typedef enum e_log_message
+{
+	TAKEAFORK,
+	EATING,
+	SLEEPING,
+	THINKING,
+	DIED
+}	t_log_message;
 
 typedef struct s_options
 {
@@ -64,13 +75,17 @@ void		sleep_action(t_management_data *mdata, int philo_id, \
 						struct timeval *time);
 void		think_action(int philo_id, struct timeval *time);
 
+/* action_list.c */
+
+void		put_log(struct timeval *time, int philo_id, char *message);
+
 /* finish_died.c */
 
 void		finish_died(int philo_id);
 
 /* get_ms.c */
 
-long long	get_ms(struct timeval time);
+long long	get_ms(struct timeval *time);
 
 /* finish_error */
 
