@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 00:08:25 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 17:01:26 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 21:34:54 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	*philo_action(void *arg)
 	{
 		eat_action(mdata, philo_id, &time);
 		sleep_action(mdata, philo_id, &time);
-		think_action(philo_id, &time);
+		think_action(mdata, philo_id, &time);
 	}
 	return (NULL);
 }
@@ -37,7 +37,6 @@ void	run_simulation(t_management_data *mdata)
 {
 	size_t	i;
 
-	printf("%s %d\n", __FILE__, __LINE__);
 	if (mdata->opts.num_of_philos == 1)
 		finish_died(1);
 	i = 0;

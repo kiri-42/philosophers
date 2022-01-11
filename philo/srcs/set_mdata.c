@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 16:26:59 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 21:02:43 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,24 @@ static void	set_opts(int ac, char **av, t_options *opts)
 		opts->num_of_must_eat = -1;
 }
 
+static void	set_log_message(t_log_message *log_message)
+{
+	log_message[TAKEAFORK].color = F_GREEN;
+	log_message[EATING].color = F_YELLOW;
+	log_message[SLEEPING].color = F_LIGHT_BLUE;
+	log_message[THINKING].color = F_BLUE;
+	log_message[DIED].color = F_RED;
+	log_message[TAKEAFORK].message = TAKEAFORK_M;
+	log_message[EATING].message = EATING_M;
+	log_message[SLEEPING].message = SLEEPING_M;
+	log_message[THINKING].message = THINKING_M;
+	log_message[DIED].message = DIED_M;
+}
+
 void	set_mdata(int ac, char **av, t_management_data *mdata)
 {
 	set_opts(ac, av, &mdata->opts);
+	set_log_message(mdata->log_message);
 	mdata->philo_treads
 		= (pthread_t *)malloc(sizeof(pthread_t) * mdata->opts.num_of_philos);
 	if (mdata->philo_treads == NULL)
