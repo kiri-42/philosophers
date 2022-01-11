@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 15:55:22 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 16:04:47 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,9 @@ void		run_simulation(t_management_data *mdata);
 
 void		eat_action(t_management_data *mdata, int philo_id, \
 						struct timeval *time);
-// void	sleep_action();
-// void	think_action();
+void		sleep_action(t_management_data *mdata, int philo_id, \
+						struct timeval *time);
+void		think_action(int philo_id, struct timeval *time);
 
 /* finish_died.c */
 

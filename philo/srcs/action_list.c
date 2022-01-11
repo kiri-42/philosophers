@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 14:56:57 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 15:53:06 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 16:03:51 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,16 @@ void	eat_action(t_management_data *mdata, int philo_id, struct timeval *time)
 	pthread_mutex_unlock(&mdata->fork_mutex[fork2]);
 }
 
-// void	sleep_action()
-// {
+void	sleep_action(t_management_data *mdata, int philo_id, \
+						struct timeval *time)
+{
+	gettimeofday(time, NULL);
+	put_log(time, philo_id, SLEEPING);
+	usleep(mdata->opts.time_to_sleep);
+}
 
-// }
-
-// void	think_action()
-// {
-
-// }
+void	think_action(int philo_id, struct timeval *time)
+{
+	gettimeofday(time, NULL);
+	put_log(time, philo_id, SLEEPING);
+}

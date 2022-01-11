@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 00:08:25 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 15:45:58 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/11 16:05:01 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	philo_action(t_management_data *mdata)
 	while (1)
 	{
 		eat_action(mdata, philo_id, &time);
-		// sleep_action();
-		// think_action();
+		sleep_action(mdata, philo_id, &time);
+		think_action(philo_id, &time);
 	}
 }
 
