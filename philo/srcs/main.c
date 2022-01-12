@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:35:06 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/12 16:13:15 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 01:01:23 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 int	main(int ac, char **av)
 {
-	t_management_data	mdata;
-
 	check_arg(ac, av);
-	set_mdata(ac, av, &mdata);
-	run_simulation(&mdata);
-	sleep(1000);
+	set_mdata(ac, av);
+	run_simulation();
+	// sleep(1000);
 }
