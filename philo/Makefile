@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/11 21:22:39 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/12 16:31:13 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ CFLAGS =	-Wall -Wextra -Werror
 all:		$(NAME)
 
 $(NAME):	$(OBJS) $(FT_LIB)
-			$(CC) $^ $(OPT) -o $@
+			$(CC) $^ -o $@
 
 $(FT_LIB):
 			make -C $(@D)

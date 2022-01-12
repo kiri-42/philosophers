@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 00:08:25 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 21:34:54 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/12 16:26:18 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ static void	*philo_action(void *arg)
 	t_management_data	*mdata;
 
 	mdata = (t_management_data *)arg;
+	// printf("%s %d %d\n", __FILE__, __LINE__, mdata->philo_id);
 	pthread_mutex_lock(&mdata->philo_id_mutex);
 	philo_id = mdata->philo_id++;
 	pthread_mutex_unlock(&mdata->philo_id_mutex);
-	if (philo_id % 2 == 1)
+	// printf("%s %d %d\n", __FILE__, __LINE__, philo_id);
+	if (philo_id % 2 == 0)
 		usleep(200);
+	// printf("%s %d %d\n", __FILE__, __LINE__, philo_id);
 	while (1)
 	{
 		eat_action(mdata, philo_id, &time);
@@ -39,6 +42,7 @@ void	run_simulation(t_management_data *mdata)
 
 	if (mdata->opts.num_of_philos == 1)
 		finish_died(1);
+	printf("%s %d\n", __FILE__, __LINE__);
 	i = 0;
 	while (i < (size_t)mdata->opts.num_of_philos)
 	{

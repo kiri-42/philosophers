@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 20:41:42 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/12 00:18:57 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_management_data
 	pthread_t		*philo_treads;
 	pthread_mutex_t	philo_id_mutex;
 	pthread_mutex_t	*fork_mutex;
+	pthread_mutex_t	put_log_mutex;
 	int				philo_id;
 	t_log_message	log_message[5];
 }	t_management_data;
@@ -72,6 +73,7 @@ void		check_arg(int ac, char **av);
 void		set_mdata(int ac, char **av, t_management_data *mdata);
 
 /* run_simulation.c */
+
 void		run_simulation(t_management_data *mdata);
 
 /* action_list.c */
@@ -85,8 +87,8 @@ void		think_action(t_management_data *mdata, int philo_id, \
 
 /* put_log.c */
 
-void		put_log(struct timeval *time, int philo_id, \
-					t_log_message *log_message);
+void		put_log(pthread_mutex_t *put_log_mutex, struct timeval *time, \
+					int philo_id, t_log_message *log_message);
 
 /* finish_died.c */
 

@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:35:06 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 01:34:43 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/12 16:13:15 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,5 @@ int	main(int ac, char **av)
 	check_arg(ac, av);
 	set_mdata(ac, av, &mdata);
 	run_simulation(&mdata);
+	sleep(1000);
 }

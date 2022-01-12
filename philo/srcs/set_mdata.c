@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/11 21:02:43 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/12 02:37:49 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,40 @@ static void	set_log_message(t_log_message *log_message)
 	log_message[DIED].message = DIED_M;
 }
 
-void	set_mdata(int ac, char **av, t_management_data *mdata)
+static void	set_treads(t_management_data *mdata)
 {
-	set_opts(ac, av, &mdata->opts);
-	set_log_message(mdata->log_message);
 	mdata->philo_treads
 		= (pthread_t *)malloc(sizeof(pthread_t) * mdata->opts.num_of_philos);
 	if (mdata->philo_treads == NULL)
 		finish_error("malloc");
-	mdata->fork_mutex
-		= (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * \
-			(mdata->opts.num_of_philos + 1));
+}
+
+static void	set_mutex(t_management_data *mdata)
+{
+	size_t	i;
+
+	mdata->fork_mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * \
+						(mdata->opts.num_of_philos + 1));
 	if (mdata->philo_treads == NULL)
 	{
 		free(&mdata->philo_treads);
 		finish_error("malloc");
 	}
-	mdata->philo_id = 1;
+	i = 0;
+	while (i <= (size_t)mdata->opts.num_of_philos)
+	{
+		pthread_mutex_init(&mdata->fork_mutex[i], NULL);
+		i++;
+	}
 	pthread_mutex_init(&mdata->philo_id_mutex, NULL);
+	pthread_mutex_init(&mdata->put_log_mutex, NULL);
+}
+
+void	set_mdata(int ac, char **av, t_management_data *mdata)
+{
+	set_opts(ac, av, &mdata->opts);
+	set_log_message(mdata->log_message);
+	set_treads(mdata);
+	set_mutex(mdata);
+	mdata->philo_id = 1;
 }
