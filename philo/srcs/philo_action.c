@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:21:53 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 14:36:54 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:19:49 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	*philo_action(void *arg)
 	pthread_mutex_lock(&g_mutex_data.philo_id_mutex);
 	philo.philo_id = g_philos_data.philo_id++;
 	pthread_mutex_unlock(&g_mutex_data.philo_id_mutex);
+	philo.is_death = LIFE;
 	g_philos_data.eat_cnt[philo.philo_id - 1] = 0;
 	if (philo.philo_id % 2 == 0)
 		usleep(200);

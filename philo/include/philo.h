@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 14:38:59 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:21:34 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/time.h>
 
 # define LIFE 0
+# define DEATH 1
 # define ERROR 1
 
 /* log_message_list */
@@ -60,6 +61,7 @@ typedef struct s_philo_data
 	int				philo_id;
 	struct timeval	time;
 	long long		time_ate;
+	bool			is_death;
 }	t_philo_data;
 
 typedef struct s_tread_data
