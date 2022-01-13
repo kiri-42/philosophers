@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 23:43:28 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/14 01:07:23 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,48 +100,18 @@ t_tread_data	g_tread_data;
 t_options		g_opts;
 t_log_message	g_log_message[5];
 
-/* check_arg.c */
+/*  Function prototype */
 
 void		check_arg(int ac, char **av);
-
-/* set_mdata.c */
-
 void		set_global_data(int ac, char **av);
-
-/* set_log_message.c */
-
 void		set_log_message(void);
-
-/* run_simulation.c */
-
 void		run_simulation(void);
-
-/* main_monitor_tread.c */
-
 void		*main_monitor(void *arg);
-
-/* philo_tread.c */
-
 void		*philo_action(void *arg);
-
-/* monitor_tread.c */
-
 void		*death_monitor(void *arg);
-
-/* put_log.c */
-
 void		put_log(t_philo_data *philo, int log_num);
-
-/* get_ms.c */
-
 long long	get_ms(struct timeval *time);
-
-/* finish_error.c */
-
 void		finish_error(char *error_message);
-
-/* free_all.c */
-
 void		free_all(void);
 
 #endif
