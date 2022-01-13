@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/13 21:16:45 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/13 23:45:20 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS = 			srcs/main.c \
 				srcs/death_monitor.c \
 				srcs/put_log.c \
 				srcs/get_ms.c \
-				srcs/finish_error.c
+				srcs/finish_error.c \
+				srcs/free_all.c
 
 OBJS = 			$(SRCS:.c=.o)
 

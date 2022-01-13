@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 20:40:25 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 23:43:28 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,5 +139,9 @@ long long	get_ms(struct timeval *time);
 /* finish_error.c */
 
 void		finish_error(char *error_message);
+
+/* free_all.c */
+
+void		free_all(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 17:12:02 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 23:47:48 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,7 @@ static void	set_philos(void)
 		= (int *)malloc(sizeof(int) * g_opts.num_of_philos);
 	if (g_philos_data.eat_cnt == NULL)
 	{
-		free(g_tread_data.philo_treads);
-		free(g_tread_data.monitor_treads);
-		free(g_mutex_data.fork_mutex);
+		free_all();
 		finish_error(MALLOC_ERROR);
 	}
 }

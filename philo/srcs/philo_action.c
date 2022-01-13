@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:21:53 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 17:25:40 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 23:46:01 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ static void	create_monitor_treads(t_philo_data *philo)
 	if (pthread_create(&g_tread_data.monitor_treads[philo->philo_id - 1], NULL, \
 						death_monitor, philo) != 0)
 	{
-		free(g_tread_data.philo_treads);
-		free(g_tread_data.monitor_treads);
-		free(g_mutex_data.fork_mutex);
+		free_all();
 		finish_error(THREAD_CREATE_ERROR);
 	}
 }
