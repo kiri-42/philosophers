@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 00:08:25 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 16:29:40 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:31:26 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	finish_died(int philo_id)
 
 	gettimeofday(&time, NULL);
 	printf("%s", g_log_message[DIED].color);
-	printf("%lld %d %s\n", get_ms(&time), philo_id, DIED);
+	printf("%lld %d %s\n", get_ms(&time), philo_id, DIED_M);
 	printf("%s", F_RESET);
 	exit(0);
 }
