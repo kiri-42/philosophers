@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 17:46:31 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 20:40:25 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
-# include "../libft/libft.h"
+# include "../libphilo/libphilo.h"
 # include "color.h"
 
 # define LIFE 0

@@ -1,20 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finish_error.c                                     :+:      :+:    :+:   */
+/*   ft_long_atoi.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 15:50:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 21:14:33 by tkirihar         ###   ########.fr       */
+/*   Created: 2021/12/13 12:01:57 by tkirihar          #+#    #+#             */
+/*   Updated: 2022/01/13 20:59:46 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "libphilo.h"
 
-void	finish_error(char *error_message)
+long	ft_long_atoi(const char *str)
 {
-	ft_putstr_fd("\x1b[31mError: \x1b[39m", STDERR_FILENO);
-	ft_putendl_fd(error_message, STDERR_FILENO);
-	exit(ERROR);
+	size_t		i;
+	long		num;
+	int			sign;
+
+	num = 0;
+	i = 0;
+	sign = 1;
+	if (!str)
+		return (0);
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = (num * 10) + (str[i] - '0');
+		i++;
+	}
+	return (num * sign);
 }

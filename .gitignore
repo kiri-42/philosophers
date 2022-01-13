@@ -12,7 +12,7 @@
 # philo/include/
 !philo/include/*.h
 
-# philo/libft/
-!philo/libft/*.[ch]
-!philo/libft/Makefile
+# philo/libphilo/
+!philo/libphilo/*.[ch]
+!philo/libphilo/Makefile
 

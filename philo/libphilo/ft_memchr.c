@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finish_error.c                                     :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 15:50:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 21:14:33 by tkirihar         ###   ########.fr       */
+/*   Created: 2021/12/08 16:06:33 by tkirihar          #+#    #+#             */
+/*   Updated: 2022/01/13 20:55:28 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "libphilo.h"
 
-void	finish_error(char *error_message)
+/* 第3引数のバイト分第1引数の先頭から第2引数の文字を探す関数 */
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	ft_putstr_fd("\x1b[31mError: \x1b[39m", STDERR_FILENO);
-	ft_putendl_fd(error_message, STDERR_FILENO);
-	exit(ERROR);
+	unsigned char	*char_s;
+	size_t			len;
+
+	char_s = (unsigned char *)s;
+	len = 0;
+	while (len < n)
+	{
+		if (char_s[len] == c)
+			return ((void *)s + len);
+		else
+			len++;
+	}
+	return (NULL);
 }

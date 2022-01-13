@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finish_error.c                                     :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 15:50:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 21:14:33 by tkirihar         ###   ########.fr       */
+/*   Created: 2021/12/08 16:06:07 by tkirihar          #+#    #+#             */
+/*   Updated: 2022/01/13 20:56:09 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "libphilo.h"
 
-void	finish_error(char *error_message)
+/* 第2引数のバイト分第1引数のメモリに0をセットする関数 */
+void	ft_bzero(void *s, size_t len)
 {
-	ft_putstr_fd("\x1b[31mError: \x1b[39m", STDERR_FILENO);
-	ft_putendl_fd(error_message, STDERR_FILENO);
-	exit(ERROR);
+	char	*p;
+	size_t	i;
+
+	i = 0;
+	p = (char *)s;
+	while (len-- > 0)
+		p[i++] = '\0';
+	return ;
 }

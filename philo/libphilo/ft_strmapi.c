@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finish_error.c                                     :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 15:50:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 21:14:33 by tkirihar         ###   ########.fr       */
+/*   Created: 2021/12/08 16:07:39 by tkirihar          #+#    #+#             */
+/*   Updated: 2022/01/13 20:53:51 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "libphilo.h"
 
-void	finish_error(char *error_message)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	ft_putstr_fd("\x1b[31mError: \x1b[39m", STDERR_FILENO);
-	ft_putendl_fd(error_message, STDERR_FILENO);
-	exit(ERROR);
+	size_t	i;
+	char	*p;
+
+	p = (char *)malloc(ft_strlen(s) + 1);
+	if (p == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		p[i] = f(i, s[i]);
+		i++;
+	}
+	p[i] = '\0';
+	return (p);
 }

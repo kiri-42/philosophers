@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finish_error.c                                     :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 15:50:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 21:14:33 by tkirihar         ###   ########.fr       */
+/*   Created: 2021/12/08 16:07:02 by tkirihar          #+#    #+#             */
+/*   Updated: 2022/01/13 20:53:22 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "libphilo.h"
 
-void	finish_error(char *error_message)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	ft_putstr_fd("\x1b[31mError: \x1b[39m", STDERR_FILENO);
-	ft_putendl_fd(error_message, STDERR_FILENO);
-	exit(ERROR);
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		f(i, &s[i]);
+		i++;
+	}
+	return ;
 }

@@ -6,57 +6,57 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/13 17:05:12 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/13 21:16:45 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 		philo
+NAME = 			philo
 
-SRCS = 		srcs/main.c \
-			srcs/check_arg.c \
-			srcs/set_global_data.c \
-			srcs/set_log_message.c \
-			srcs/run_simulation.c \
-			srcs/main_death_monitor.c \
-			srcs/philo_action.c \
-			srcs/death_monitor.c \
-			srcs/put_log.c \
-			srcs/get_ms.c \
-			srcs/finish_error.c
+SRCS = 			srcs/main.c \
+				srcs/check_arg.c \
+				srcs/set_global_data.c \
+				srcs/set_log_message.c \
+				srcs/run_simulation.c \
+				srcs/main_death_monitor.c \
+				srcs/philo_action.c \
+				srcs/death_monitor.c \
+				srcs/put_log.c \
+				srcs/get_ms.c \
+				srcs/finish_error.c
 
-OBJS = 		$(SRCS:.c=.o)
+OBJS = 			$(SRCS:.c=.o)
 
-FT_DIR = 	libft
+LIBPHILO_DIR = 	libphilo
 
-FT_LIB = 	libft/libft.a
+LIBPHILO_LIB = 	libphilo/libphilo.a
 
-CC =		gcc
+CC =			gcc
 
-RM =		rm -f
+RM =			rm -f
 
-CFLAGS =	-Wall -Wextra -Werror
+CFLAGS =		-Wall -Wextra -Werror
 
 .PHONY: all re clean fclean
 
-all:		$(NAME)
+all:			$(NAME)
 
-$(NAME):	$(OBJS) $(FT_LIB)
-			$(CC) $^ -o $@
+$(NAME):		$(OBJS) $(LIBPHILO_LIB)
+				$(CC) $^ -o $@
 
-$(FT_LIB):
-			make -C $(@D)
+$(LIBPHILO_LIB):
+				make -C $(@D)
 
-%.o:		%.c
-			$(CC) $(CFLAGS) -c $< -o $@
+%.o:			%.c
+				$(CC) $(CFLAGS) -c $< -o $@
 
 re:
-			make fclean
-			make
+				make fclean
+				make
 
 clean:
-			$(RM) $(OBJS)
-			make -C $(FT_DIR) clean
+				$(RM) $(OBJS)
+				make -C $(LIBPHILO_DIR) clean
 
-fclean:		clean
-			$(RM) $(NAME)
-			make -C $(FT_DIR) fclean
+fclean:			clean
+				$(RM) $(NAME)
+				make -C $(LIBPHILO_DIR) fclean
