@@ -6,26 +6,31 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 16:29:05 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:45:46 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include "../libft/libft.h"
-# include "color.h"
 # include <stdio.h>
 # include <stdbool.h>
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include "../libft/libft.h"
+# include "color.h"
 
 # define LIFE 0
 # define DEATH 1
 # define ERROR 1
 
-/* log_message_list */
+/* Error message list */
+# define ARG_ERROR				"The format of the argument is incorrect"
+# define MALLOC_ERROR			"Failed to allocate memory"
+# define THREAD_CREATE_ERROR	"Failed to create thread"
+
+/* Log message list */
 # define TAKEAFORK_M	"has taken a fork"
 # define EATING_M		"is eating"
 # define SLEEPING_M		"is sleeping"

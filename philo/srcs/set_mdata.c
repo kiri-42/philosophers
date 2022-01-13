@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 14:33:06 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:43:27 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	set_treads(void)
 	if (g_tread_data.monitor_treads == NULL)
 	{
 		// free
-		finish_error("malloc");
+		finish_error(MALLOC_ERROR);
 	}
 }
 
@@ -63,7 +63,7 @@ static void	set_mutex(void)
 	if (g_mutex_data.fork_mutex == NULL)
 	{
 		// free
-		finish_error("malloc");
+		finish_error(MALLOC_ERROR);
 	}
 	i = 0;
 	while (i <= (size_t)g_opts.num_of_philos)
@@ -89,6 +89,6 @@ void	set_mdata(int ac, char **av)
 	if (g_philos_data.eat_cnt == NULL)
 	{
 		// free
-		finish_error("malloc");
+		finish_error(MALLOC_ERROR);
 	}
 }

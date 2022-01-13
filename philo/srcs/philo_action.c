@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:21:53 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 16:19:49 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:49:30 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	create_monitor_treads(t_philo_data *philo)
 						death_monitor, philo) != 0)
 	{
 		// free
-		exit(1);
+		finish_error(THREAD_CREATE_ERROR);
 	}
 }
 

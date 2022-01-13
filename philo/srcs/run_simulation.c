@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 00:08:25 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 16:31:26 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:52:07 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static void	create_main_monitor_tread(void)
 	if (pthread_create(&g_tread_data.main_monitor_tread, NULL, \
 		main_monitor, NULL) != 0)
 	{
-		exit(1);
+		// free
+		finish_error(THREAD_CREATE_ERROR);
 	}
 }
 
@@ -42,7 +43,8 @@ static void	create_philo_treads(void)
 		if (pthread_create(&g_tread_data.philo_treads[i], NULL, \
 			philo_action, NULL) != 0)
 		{
-			exit(1);
+			// free
+			finish_error(THREAD_CREATE_ERROR);
 		}
 		i++;
 	}
@@ -55,5 +57,4 @@ void	run_simulation(void)
 	create_main_monitor_tread();
 	create_philo_treads();
 	pthread_join(g_tread_data.main_monitor_tread, NULL);
-	printf("finish\n");
 }

@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:41:35 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/10 17:01:59 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:41:07 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_arg(int ac, char **av)
 	size_t	char_i;
 
 	if (!(ac == 5 || ac == 6))
-		finish_error("the number of options is incorrect");
+		finish_error(ARG_ERROR);
 	ac_i = 1;
 	while (ac_i < (size_t)ac)
 	{
@@ -26,11 +26,11 @@ void	check_arg(int ac, char **av)
 		while (av[ac_i][char_i] != '\0')
 		{
 			if (!(ft_isdigit(av[ac_i][char_i])))
-				finish_error("non-numeric character was detected in the options");
+				finish_error(ARG_ERROR);
 			char_i++;
 		}
 		if (!(check_int(av[ac_i])))
-			finish_error("the option string does not fit in the int range");
+			finish_error(ARG_ERROR);
 		ac_i++;
 	}
 }
