@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 16:21:34 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:29:05 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,6 @@ void		*death_monitor(void *arg);
 /* put_log.c */
 
 void		put_log(t_philo_data *philo, int log_num);
-
-/* finish_died.c */
-
-void		finish_died(int philo_id);
 
 /* get_ms.c */
 

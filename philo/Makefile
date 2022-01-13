@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/13 01:46:43 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/13 16:29:13 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRCS = 		srcs/main.c \
 			srcs/philo_action.c \
 			srcs/death_monitor.c \
 			srcs/put_log.c \
-			srcs/finish_died.c \
 			srcs/get_ms.c \
 			srcs/finish_error.c
 
