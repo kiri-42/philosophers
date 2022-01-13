@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:21:53 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 01:46:28 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 14:36:54 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	eat_action(t_philo_data *philo)
 	usleep(g_opts.time_to_eat * 1000);
 	pthread_mutex_unlock(&g_mutex_data.fork_mutex[fork1]);
 	pthread_mutex_unlock(&g_mutex_data.fork_mutex[fork2]);
+	g_philos_data.eat_cnt[philo->philo_id - 1]++;
 }
 
 static void	sleep_action(t_philo_data *philo)
@@ -66,6 +67,7 @@ void	*philo_action(void *arg)
 	pthread_mutex_lock(&g_mutex_data.philo_id_mutex);
 	philo.philo_id = g_philos_data.philo_id++;
 	pthread_mutex_unlock(&g_mutex_data.philo_id_mutex);
+	g_philos_data.eat_cnt[philo.philo_id - 1] = 0;
 	if (philo.philo_id % 2 == 0)
 		usleep(200);
 	gettimeofday(&philo.time, NULL);

@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 01:02:51 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 14:33:06 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,11 @@ void	set_mdata(int ac, char **av)
 	set_mutex();
 	g_philos_data.philo_id = 1;
 	g_philos_data.death_flag = 0;
+	g_philos_data.eat_cnt
+		= (int *)malloc(sizeof(int) * g_opts.num_of_philos);
+	if (g_philos_data.eat_cnt == NULL)
+	{
+		// free
+		finish_error("malloc");
+	}
 }

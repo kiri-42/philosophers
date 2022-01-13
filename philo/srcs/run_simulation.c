@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 00:08:25 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 01:43:21 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 14:39:19 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	create_main_monitor_tread(void)
 {
 	if (pthread_create(&g_tread_data.main_monitor_tread, NULL, \
-		main_death_monitor, NULL) != 0)
+		main_monitor, NULL) != 0)
 	{
 		exit(1);
 	}

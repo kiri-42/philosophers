@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 01:53:43 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/13 14:38:59 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 # include "color.h"
 # include <stdio.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
@@ -81,6 +82,7 @@ typedef struct s_philos_data
 	int				philo_id;
 	int				death_flag;
 	int				death_time;
+	int				*eat_cnt;
 }	t_philos_data;
 
 /* Global variables */
@@ -104,7 +106,7 @@ void		set_mdata(int ac, char **av);
 void		run_simulation(void);
 
 /* main_monitor_tread */
-void		*main_death_monitor(void *arg);
+void		*main_monitor(void *arg);
 
 /* philo_tread.c */
 
