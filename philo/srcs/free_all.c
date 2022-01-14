@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 23:42:05 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 23:42:46 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/14 15:25:39 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ void	free_all(void)
 	free(g_tread_data.philo_treads);
 	free(g_tread_data.monitor_treads);
 	free(g_mutex_data.fork_mutex);
+	free(g_philos_data.eat_cnt);
 }
