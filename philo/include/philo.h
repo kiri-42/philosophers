@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/14 15:30:55 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/16 15:14:13 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,23 @@ typedef struct s_philos_data
 	int				*eat_cnt;
 }	t_philos_data;
 
+typedef struct	s_management_data
+{
+	t_options		opts;
+	t_mutex_data	mutex;
+	t_philo_data	*philo;
+	t_philos_data	philos;
+	t_tread_data	tread;
+	t_log_message	t_log_message[5];
+}	t_management_data
+
 /* Global variables */
 
-t_philos_data	g_philos_data;
-t_mutex_data	g_mutex_data;
-t_tread_data	g_tread_data;
-t_options		g_opts;
-t_log_message	g_log_message[5];
+// t_philos_data	g_philos_data;
+// t_mutex_data	g_mutex_data;
+// t_tread_data	g_tread_data;
+// t_options		g_opts;
+// t_log_message	g_log_message[5];
 
 /*  Function prototype */
 
