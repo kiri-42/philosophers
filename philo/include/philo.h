@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/16 15:14:13 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/16 15:15:00 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ typedef struct	s_management_data
 	t_philos_data	philos;
 	t_tread_data	tread;
 	t_log_message	t_log_message[5];
-}	t_management_data
+}	t_management_data;
 
 /* Global variables */
 
