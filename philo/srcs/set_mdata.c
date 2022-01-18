@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/18 01:40:49 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/18 23:46:48 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	set_opts(int ac, char **av, t_options *opts)
 		opts->num_of_must_eat = -1;
 }
 
-static void	set_treads(t_management_data *mdata)
+static int	set_treads(t_management_data *mdata)
 {
 	mdata->thread.philo_treads
 		= (pthread_t *)malloc(sizeof(pthread_t) * mdata->opts.num_of_philos);
@@ -35,11 +35,12 @@ static void	set_treads(t_management_data *mdata)
 	if (mdata->thread.monitor_treads == NULL)
 	{
 		free(mdata->thread.philo_treads);
-		finish_error(MALLOC_ERROR);
+		return (finish_error(MALLOC_ERROR));
 	}
+	return (SUCCESS);
 }
 
-static void	set_mutex(t_management_data *mdata)
+static int	set_mutex(t_management_data *mdata)
 {
 	int	i;
 
@@ -50,7 +51,7 @@ static void	set_mutex(t_management_data *mdata)
 	{
 		free(mdata->thread.philo_treads);
 		free(mdata->thread.monitor_treads);
-		finish_error(MALLOC_ERROR);
+		return (finish_error(MALLOC_ERROR));
 	}
 	i = 0;
 	while (i <= mdata->opts.num_of_philos)
@@ -61,23 +62,10 @@ static void	set_mutex(t_management_data *mdata)
 	pthread_mutex_init(&mdata->mutex.philo_id_mutex, NULL);
 	pthread_mutex_init(&mdata->mutex.put_log_mutex, NULL);
 	pthread_mutex_init(&mdata->mutex.death_info_mutex, NULL);
+	return (SUCCESS);
 }
 
-// static void	set_philo(t_management_data *mdata)
-// {
-// 	mdata->philo
-// 		= (t_philo_data *)malloc(sizeof(t_philo_data) * \
-// 								mdata->opts.num_of_philos);
-// 	if (mdata->philo == NULL)
-// 	{
-// 		free(mdata->thread.philo_treads);
-// 		free(mdata->thread.monitor_treads);
-// 		free(mdata->mutex.fork_mutex);
-// 		finish_error(MALLOC_ERROR);
-// 	}
-// }
-
-static void	set_philos(t_management_data *mdata)
+static int	set_philos(t_management_data *mdata)
 {
 	mdata->philos.philo_id = 0;
 	mdata->philos.death_flag = 0;
@@ -88,17 +76,18 @@ static void	set_philos(t_management_data *mdata)
 		free(mdata->thread.philo_treads);
 		free(mdata->thread.monitor_treads);
 		free(mdata->mutex.fork_mutex);
-		// free(mdata->philo);
-		finish_error(MALLOC_ERROR);
+		return (finish_error(MALLOC_ERROR));
 	}
+	return (SUCCESS);
 }
 
-void	set_mdata(int ac, char **av, t_management_data *mdata)
+int	set_mdata(int ac, char **av, t_management_data *mdata)
 {
 	set_opts(ac, av, &mdata->opts);
-	set_treads(mdata);
-	set_mutex(mdata);
-	// set_philo(mdata);
-	set_philos(mdata);
+	if (!(set_treads(mdata) == SUCCESS && \
+		set_mutex(mdata) == SUCCESS && \
+		set_philos(mdata) == SUCCESS))
+		return (ERROR);
 	set_log_message(mdata);
+	return (SUCCESS);
 }

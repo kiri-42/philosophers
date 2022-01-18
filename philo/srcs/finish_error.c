@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:50:28 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/18 18:23:23 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/18 22:10:09 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static void	ft_putendl_fd(char *s, int fd)
 	write(fd, "\n", 1);
 }
 
-void	finish_error(char *error_message)
+int	finish_error(char *error_message)
 {
 	ft_putstr_fd(F_RED, STDERR_FILENO);
 	ft_putstr_fd("Error: ", STDERR_FILENO);
 	ft_putstr_fd(F_RESET, STDERR_FILENO);
 	ft_putendl_fd(error_message, STDERR_FILENO);
-	exit(ERROR);
+	return (ERROR);
 }
