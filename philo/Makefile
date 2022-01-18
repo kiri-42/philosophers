@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/18 16:54:44 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/18 18:40:43 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = 			philo
 
 SRCS = 			srcs/main.c \
 				srcs/check_arg.c \
+				srcs/check_int.c \
 				srcs/set_mdata.c \
+				srcs/ft_atoi.c \
 				srcs/set_log_message.c \
 				srcs/run_simulation.c \
 				srcs/main_death_monitor.c \
@@ -23,13 +25,10 @@ SRCS = 			srcs/main.c \
 				srcs/put_log.c \
 				srcs/get_ms.c \
 				srcs/finish_error.c \
-				srcs/free_all.c
+				srcs/free_all.c \
+				srcs/ft_isspace.c
 
 OBJS = 			$(SRCS:.c=.o)
-
-LIBPHILO_DIR = 	libphilo
-
-LIBPHILO_LIB = 	libphilo/libphilo.a
 
 CC =			gcc
 
@@ -41,11 +40,8 @@ CFLAGS =		-Wall -Wextra -Werror
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS) $(LIBPHILO_LIB)
+$(NAME):		$(OBJS)
 				$(CC) $^ -o $@
-
-$(LIBPHILO_LIB):
-				make -C $(@D)
 
 %.o:			%.c
 				$(CC) $(CFLAGS) -c $< -o $@
@@ -56,8 +52,6 @@ re:
 
 clean:
 				$(RM) $(OBJS)
-				make -C $(LIBPHILO_DIR) clean
 
 fclean:			clean
 				$(RM) $(NAME)
-				make -C $(LIBPHILO_DIR) fclean

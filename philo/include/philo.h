@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/18 17:10:15 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:40:00 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
-# include "../libphilo/libphilo.h"
+# include <limits.h>
+# include <stdlib.h>
 # include "color.h"
 
 # define LIFE 0
@@ -114,7 +115,10 @@ typedef struct s_action_data
 /*  Function prototype */
 
 void		check_arg(int ac, char **av);
+bool		check_int(const char *str);
+long		ft_long_atoi(const char *str);
 void		set_mdata(int ac, char **av, t_management_data *mdata);
+int			ft_atoi(const char *str);
 void		set_log_message(t_management_data *mdata);
 void		run_simulation(t_management_data *mdata);
 void		*main_monitor(void *arg);
@@ -125,5 +129,6 @@ long long	get_ms(struct timeval *time);
 void		finish_error(char *error_message);
 void		free_mdata(t_management_data *mdata);
 void		free_adata(t_action_data *adata);
+int			ft_isspace(char a);
 
 #endif
