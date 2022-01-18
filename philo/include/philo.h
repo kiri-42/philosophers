@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/16 15:15:00 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/18 17:10:15 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ typedef struct s_philo_data
 	bool			is_death;
 }	t_philo_data;
 
-typedef struct s_tread_data
+typedef struct s_thread_data
 {
 	pthread_t	*philo_treads;
 	pthread_t	*monitor_treads;
 	pthread_t	main_monitor_tread;
-}	t_tread_data;
+}	t_thread_data;
 
 typedef struct s_mutex_data
 {
@@ -92,36 +92,38 @@ typedef struct s_philos_data
 	int				*eat_cnt;
 }	t_philos_data;
 
-typedef struct	s_management_data
+typedef struct s_management_data
 {
 	t_options		opts;
+	t_thread_data	thread;
 	t_mutex_data	mutex;
-	t_philo_data	*philo;
 	t_philos_data	philos;
-	t_tread_data	tread;
-	t_log_message	t_log_message[5];
+	t_log_message	log_message[5];
 }	t_management_data;
 
-/* Global variables */
-
-// t_philos_data	g_philos_data;
-// t_mutex_data	g_mutex_data;
-// t_tread_data	g_tread_data;
-// t_options		g_opts;
-// t_log_message	g_log_message[5];
+typedef struct s_action_data
+{
+	t_philo_data	philo;
+	t_options		*opts;
+	t_thread_data	*thread;
+	t_mutex_data	*mutex;
+	t_philos_data	*philos;
+	t_log_message	*log_message;
+}	t_action_data;
 
 /*  Function prototype */
 
 void		check_arg(int ac, char **av);
-void		set_global_data(int ac, char **av);
-void		set_log_message(void);
-void		run_simulation(void);
+void		set_mdata(int ac, char **av, t_management_data *mdata);
+void		set_log_message(t_management_data *mdata);
+void		run_simulation(t_management_data *mdata);
 void		*main_monitor(void *arg);
 void		*philo_action(void *arg);
 void		*death_monitor(void *arg);
-void		put_log(t_philo_data *philo, int log_num);
+void		put_log(t_action_data *action_data, int log_num);
 long long	get_ms(struct timeval *time);
 void		finish_error(char *error_message);
-void		free_all(void);
+void		free_mdata(t_management_data *mdata);
+void		free_adata(t_action_data *adata);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/14 15:31:31 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/18 16:54:44 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = 			philo
 
 SRCS = 			srcs/main.c \
 				srcs/check_arg.c \
-				srcs/set_global_data.c \
+				srcs/set_mdata.c \
 				srcs/set_log_message.c \
 				srcs/run_simulation.c \
 				srcs/main_death_monitor.c \

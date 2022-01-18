@@ -6,79 +6,94 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:21:53 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 23:46:01 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/18 17:09:25 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-static void	create_monitor_treads(t_philo_data *philo)
+static void	create_monitor_treads(t_action_data *adata)
 {
-	if (pthread_create(&g_tread_data.monitor_treads[philo->philo_id - 1], NULL, \
-						death_monitor, philo) != 0)
+	int	philo_id;
+
+	philo_id = adata->philo.philo_id;
+	if (pthread_create(&adata->thread->philo_treads[philo_id], \
+						NULL, death_monitor, adata) != 0)
 	{
-		free_all();
+		free_adata(adata);
 		finish_error(THREAD_CREATE_ERROR);
 	}
 }
 
-static void	eat_action(t_philo_data *philo)
+static void	eat_action(t_action_data *adata)
 {
 	int	fork1;
 	int	fork2;
 
-	fork1 = philo->philo_id;
-	if (philo->philo_id != g_opts.num_of_philos)
-		fork2 = philo->philo_id + 1;
+	fork1 = adata->philo.philo_id;
+	if (fork1 + 1 != adata->opts->num_of_philos)
+		fork2 = fork1 + 1;
 	else
-		fork2 = 1;
-	pthread_mutex_lock(&g_mutex_data.fork_mutex[fork1]);
-	gettimeofday(&philo->time, NULL);
-	put_log(philo, TAKEAFORK);
-	pthread_mutex_lock(&g_mutex_data.fork_mutex[fork2]);
-	gettimeofday(&philo->time, NULL);
-	put_log(philo, TAKEAFORK);
-	gettimeofday(&philo->time, NULL);
-	put_log(philo, EATING);
-	philo->time_ate = get_ms(&philo->time);
-	usleep(g_opts.time_to_eat * 1000);
-	pthread_mutex_unlock(&g_mutex_data.fork_mutex[fork1]);
-	pthread_mutex_unlock(&g_mutex_data.fork_mutex[fork2]);
-	g_philos_data.eat_cnt[philo->philo_id - 1]++;
+		fork2 = 0;
+	pthread_mutex_lock(&adata->mutex->fork_mutex[fork1]);
+	gettimeofday(&adata->philo.time, NULL);
+	put_log(adata, TAKEAFORK);
+	pthread_mutex_lock(&adata->mutex->fork_mutex[fork2]);
+	gettimeofday(&adata->philo.time, NULL);
+	put_log(adata, TAKEAFORK);
+	gettimeofday(&adata->philo.time, NULL);
+	put_log(adata, EATING);
+	adata->philo.time_ate = get_ms(&adata->philo.time);
+	usleep(adata->opts->time_to_eat * 1000);
+	pthread_mutex_unlock(&adata->mutex->fork_mutex[fork1]);
+	pthread_mutex_unlock(&adata->mutex->fork_mutex[fork2]);
+	adata->philos->eat_cnt[adata->philo.philo_id]++;
 }
 
-static void	sleep_action(t_philo_data *philo)
+static void	sleep_action(t_action_data *adata)
 {
-	gettimeofday(&philo->time, NULL);
-	put_log(philo, SLEEPING);
-	usleep(g_opts.time_to_sleep * 1000);
+	gettimeofday(&adata->philo.time, NULL);
+	put_log(adata, SLEEPING);
+	usleep(adata->opts->time_to_sleep * 1000);
 }
 
-static void	think_action(t_philo_data *philo)
+static void	think_action(t_action_data *adata)
 {
-	gettimeofday(&philo->time, NULL);
-	put_log(philo, THINKING);
+	gettimeofday(&adata->philo.time, NULL);
+	put_log(adata, THINKING);
+}
+
+static void	set_adata(t_management_data *mdata, t_action_data *adata)
+{
+	adata->opts = &mdata->opts;
+	adata->thread = &mdata->thread;
+	adata->mutex = &mdata->mutex;
+	adata->philos = &mdata->philos;
+	adata->log_message = mdata->log_message;
+	pthread_mutex_lock(&adata->mutex->philo_id_mutex);
+	adata->philo.philo_id = adata->philos->philo_id++;
+	pthread_mutex_unlock(&adata->mutex->philo_id_mutex);
+	adata->philo.is_death = LIFE;
+	adata->philos->eat_cnt[adata->philo.philo_id] = 0;
+	if (adata->philo.philo_id % 2 == 1)
+		usleep(200);
+	gettimeofday(&adata->philo.time, NULL);
+	adata->philo.time_ate = get_ms(&adata->philo.time);
 }
 
 void	*philo_action(void *arg)
 {
-	t_philo_data	philo;
+	t_management_data	*mdata;
+	t_action_data		adata;
 
-	pthread_mutex_lock(&g_mutex_data.philo_id_mutex);
-	philo.philo_id = g_philos_data.philo_id++;
-	pthread_mutex_unlock(&g_mutex_data.philo_id_mutex);
-	philo.is_death = LIFE;
-	g_philos_data.eat_cnt[philo.philo_id - 1] = 0;
-	if (philo.philo_id % 2 == 0)
-		usleep(200);
-	gettimeofday(&philo.time, NULL);
-	philo.time_ate = get_ms(&philo.time);
-	create_monitor_treads(&philo);
+	mdata = (t_management_data *)arg;
+	set_adata(mdata, &adata);
+	create_monitor_treads(&adata);
 	while (1)
 	{
-		eat_action(&philo);
-		sleep_action(&philo);
-		think_action(&philo);
+		eat_action(&adata);
+		sleep_action(&adata);
+		think_action(&adata);
 	}
-	return (arg);
+	return (NULL);
 }
