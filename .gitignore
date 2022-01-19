@@ -11,8 +11,3 @@
 
 # philo/include/
 !philo/include/*.h
-
-# philo/libphilo/
-!philo/libphilo/*.[ch]
-!philo/libphilo/Makefile
-

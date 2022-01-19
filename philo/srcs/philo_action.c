@@ -6,79 +6,78 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:21:53 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 23:46:01 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:55:53 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-static void	create_monitor_treads(t_philo_data *philo)
+static void	create_monitor_treads(t_action_data *ad)
 {
-	if (pthread_create(&g_tread_data.monitor_treads[philo->philo_id - 1], NULL, \
-						death_monitor, philo) != 0)
+	int	philo_id;
+
+	philo_id = ad->philo.philo_id;
+	if (pthread_create(&ad->thread->philo_treads[philo_id], \
+						NULL, death_monitor, ad) != 0)
 	{
-		free_all();
+		*ad->is_error = ERROR;
+		pthread_mutex_lock(&ad->mutex->put_log_mutex);
 		finish_error(THREAD_CREATE_ERROR);
+		pthread_mutex_unlock(&ad->mutex->put_log_mutex);
 	}
 }
 
-static void	eat_action(t_philo_data *philo)
+static void	eat_action(t_action_data *ad)
 {
 	int	fork1;
 	int	fork2;
 
-	fork1 = philo->philo_id;
-	if (philo->philo_id != g_opts.num_of_philos)
-		fork2 = philo->philo_id + 1;
+	fork1 = ad->philo.philo_id;
+	if (fork1 + 1 != ad->opts->num_of_philos)
+		fork2 = fork1 + 1;
 	else
-		fork2 = 1;
-	pthread_mutex_lock(&g_mutex_data.fork_mutex[fork1]);
-	gettimeofday(&philo->time, NULL);
-	put_log(philo, TAKEAFORK);
-	pthread_mutex_lock(&g_mutex_data.fork_mutex[fork2]);
-	gettimeofday(&philo->time, NULL);
-	put_log(philo, TAKEAFORK);
-	gettimeofday(&philo->time, NULL);
-	put_log(philo, EATING);
-	philo->time_ate = get_ms(&philo->time);
-	usleep(g_opts.time_to_eat * 1000);
-	pthread_mutex_unlock(&g_mutex_data.fork_mutex[fork1]);
-	pthread_mutex_unlock(&g_mutex_data.fork_mutex[fork2]);
-	g_philos_data.eat_cnt[philo->philo_id - 1]++;
+		fork2 = 0;
+	pthread_mutex_lock(&ad->mutex->fork_mutex[fork1]);
+	gettimeofday(&ad->philo.time, NULL);
+	put_log(ad, TAKEAFORK);
+	pthread_mutex_lock(&ad->mutex->fork_mutex[fork2]);
+	gettimeofday(&ad->philo.time, NULL);
+	put_log(ad, TAKEAFORK);
+	gettimeofday(&ad->philo.time, NULL);
+	put_log(ad, EATING);
+	ad->philo.time_ate = get_ms(&ad->philo.time);
+	usleep(ad->opts->time_to_eat * 1000);
+	pthread_mutex_unlock(&ad->mutex->fork_mutex[fork1]);
+	pthread_mutex_unlock(&ad->mutex->fork_mutex[fork2]);
+	ad->philos->eat_cnt[ad->philo.philo_id]++;
 }
 
-static void	sleep_action(t_philo_data *philo)
+static void	sleep_action(t_action_data *ad)
 {
-	gettimeofday(&philo->time, NULL);
-	put_log(philo, SLEEPING);
-	usleep(g_opts.time_to_sleep * 1000);
+	gettimeofday(&ad->philo.time, NULL);
+	put_log(ad, SLEEPING);
+	usleep(ad->opts->time_to_sleep * 1000);
 }
 
-static void	think_action(t_philo_data *philo)
+static void	think_action(t_action_data *ad)
 {
-	gettimeofday(&philo->time, NULL);
-	put_log(philo, THINKING);
+	gettimeofday(&ad->philo.time, NULL);
+	put_log(ad, THINKING);
 }
 
 void	*philo_action(void *arg)
 {
-	t_philo_data	philo;
+	t_management_data	*md;
+	t_action_data		ad;
 
-	pthread_mutex_lock(&g_mutex_data.philo_id_mutex);
-	philo.philo_id = g_philos_data.philo_id++;
-	pthread_mutex_unlock(&g_mutex_data.philo_id_mutex);
-	philo.is_death = LIFE;
-	g_philos_data.eat_cnt[philo.philo_id - 1] = 0;
-	if (philo.philo_id % 2 == 0)
-		usleep(200);
-	gettimeofday(&philo.time, NULL);
-	philo.time_ate = get_ms(&philo.time);
-	create_monitor_treads(&philo);
+	md = (t_management_data *)arg;
+	set_action_data(md, &ad);
+	create_monitor_treads(&ad);
 	while (1)
 	{
-		eat_action(&philo);
-		sleep_action(&philo);
-		think_action(&philo);
+		eat_action(&ad);
+		sleep_action(&ad);
+		think_action(&ad);
 	}
-	return (arg);
+	return (NULL);
 }

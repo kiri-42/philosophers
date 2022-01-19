@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 16:06:42 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 20:57:09 by tkirihar         ###   ########.fr       */
+/*   Created: 2022/01/13 23:42:05 by tkirihar          #+#    #+#             */
+/*   Updated: 2022/01/19 18:22:20 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libphilo.h"
+#include "../include/philo.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	free_management_data(t_management_data *md)
 {
-	write(fd, s, ft_strlen(s));
-	return ;
+	free(md->thread.philo_treads);
+	free(md->thread.monitor_treads);
+	free(md->mutex.fork_mutex);
+	free(md->philos.eat_cnt);
+}
+
+void	free_action_data(t_action_data *ad)
+{
+	free(ad->thread->philo_treads);
+	free(ad->thread->monitor_treads);
+	free(ad->mutex->fork_mutex);
+	free(ad->philos->eat_cnt);
 }

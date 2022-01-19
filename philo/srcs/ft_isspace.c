@@ -1,39 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 16:06:46 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 20:51:14 by tkirihar         ###   ########.fr       */
+/*   Created: 2022/01/18 18:32:43 by tkirihar          #+#    #+#             */
+/*   Updated: 2022/01/18 18:33:09 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libphilo.h"
+#include "../include/philo.h"
 
-static char	*ft_strcpy(char *dest, char *src)
+int	ft_isspace(char a)
 {
-	int	i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-/* 引数の文字列を複製したヒープ領域を返す関数 */
-char	*ft_strdup(char *src)
-{
-	char	*ptr;
-
-	ptr = malloc(ft_strlen(src) + 1);
-	if (ptr == NULL)
-		return (0);
-	ft_strcpy(ptr, src);
-	return (ptr);
+	return (a == '\t' || a == '\n' || a == '\v'
+		|| a == ' ' || a == '\r' || a == '\f' );
 }

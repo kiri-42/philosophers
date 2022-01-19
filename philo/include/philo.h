@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/14 15:30:55 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:55:47 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 # include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
-# include "../libphilo/libphilo.h"
+# include <limits.h>
+# include <stdlib.h>
 # include "color.h"
 
 # define LIFE 0
 # define DEATH 1
+# define SUCCESS 0
 # define ERROR 1
 
 /* Error message list */
@@ -69,12 +71,12 @@ typedef struct s_philo_data
 	bool			is_death;
 }	t_philo_data;
 
-typedef struct s_tread_data
+typedef struct s_thread_data
 {
 	pthread_t	*philo_treads;
 	pthread_t	*monitor_treads;
 	pthread_t	main_monitor_tread;
-}	t_tread_data;
+}	t_thread_data;
 
 typedef struct s_mutex_data
 {
@@ -86,32 +88,51 @@ typedef struct s_mutex_data
 
 typedef struct s_philos_data
 {
-	int				philo_id;
-	int				death_flag;
-	int				death_time;
-	int				*eat_cnt;
+	int	philo_id;
+	int	death_flag;
+	int	death_time;
+	int	*eat_cnt;
 }	t_philos_data;
 
-/* Global variables */
+typedef struct s_management_data
+{
+	t_options		opts;
+	t_thread_data	thread;
+	t_mutex_data	mutex;
+	t_philos_data	philos;
+	t_log_message	log_message[5];
+	bool			is_error;
+}	t_management_data;
 
-t_philos_data	g_philos_data;
-t_mutex_data	g_mutex_data;
-t_tread_data	g_tread_data;
-t_options		g_opts;
-t_log_message	g_log_message[5];
+typedef struct s_action_data
+{
+	t_philo_data	philo;
+	t_options		*opts;
+	t_thread_data	*thread;
+	t_mutex_data	*mutex;
+	t_philos_data	*philos;
+	t_log_message	*log_message;
+	bool			*is_error;
+}	t_action_data;
 
 /*  Function prototype */
 
-void		check_arg(int ac, char **av);
-void		set_global_data(int ac, char **av);
-void		set_log_message(void);
-void		run_simulation(void);
+int			check_arg(int ac, char **av);
+bool		check_int(const char *str);
+long		ft_long_atoi(const char *str);
+int			set_management_data(int ac, char **av, t_management_data *md);
+int			ft_atoi(const char *str);
+void		set_log_message(t_management_data *md);
+int			run_simulation(t_management_data *md);
 void		*main_monitor(void *arg);
 void		*philo_action(void *arg);
+void		set_action_data(t_management_data *md, t_action_data *ad);
 void		*death_monitor(void *arg);
-void		put_log(t_philo_data *philo, int log_num);
+void		put_log(t_action_data *ad, int log_num);
 long long	get_ms(struct timeval *time);
-void		finish_error(char *error_message);
-void		free_all(void);
+int			finish_error(char *error_message);
+void		free_management_data(t_management_data *md);
+void		free_action_data(t_action_data *ad);
+int			ft_isspace(char a);
 
 #endif

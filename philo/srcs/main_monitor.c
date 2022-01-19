@@ -1,56 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_death_monitor.c                               :+:      :+:    :+:   */
+/*   main_monitor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:24:15 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/13 14:38:47 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:44:51 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-static bool	check_eat_cnt(void)
+static bool	check_eat_cnt(t_management_data *md)
 {
-	size_t	i;
+	int	i;
 
-	if (g_opts.num_of_must_eat == -1)
+	if (md->opts.num_of_must_eat == -1)
 		return (false);
 	i = 0;
-	while (i < (size_t)g_opts.num_of_philos)
+	while (i < md->opts.num_of_philos)
 	{
-		if (g_philos_data.eat_cnt[i] < g_opts.num_of_must_eat)
+		if (md->philos.eat_cnt[i] < md->opts.num_of_must_eat)
 			return (false);
 		i++;
 	}
 	return (true);
 }
 
-static void	detach_all_treads(void)
+static void	detach_all_treads(t_management_data *md)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (i < (size_t)g_opts.num_of_philos)
+	while (i < md->opts.num_of_philos)
 	{
-		pthread_detach(g_tread_data.monitor_treads[i]);
-		pthread_detach(g_tread_data.philo_treads[i]);
+		pthread_detach(md->thread.monitor_treads[i]);
+		pthread_detach(md->thread.philo_treads[i]);
 		i++;
 	}
 }
 
 void	*main_monitor(void *arg)
 {
+	t_management_data	*md;
+
+	md = arg;
 	while (1)
 	{
-		if (g_philos_data.death_flag != LIFE || check_eat_cnt())
+		if (md->philos.death_flag != LIFE || md->is_error || check_eat_cnt(md))
 		{
-			detach_all_treads();
+			detach_all_treads(md);
 			break ;
 		}
 		usleep(200);
 	}
-	return (arg);
+	return (NULL);
 }
