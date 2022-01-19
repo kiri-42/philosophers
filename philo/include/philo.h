@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/18 23:48:18 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 00:31:06 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,18 +118,18 @@ typedef struct s_action_data
 int			check_arg(int ac, char **av);
 bool		check_int(const char *str);
 long		ft_long_atoi(const char *str);
-int			set_mdata(int ac, char **av, t_management_data *mdata);
+int			set_mdata(int ac, char **av, t_management_data *md);
 int			ft_atoi(const char *str);
-void		set_log_message(t_management_data *mdata);
-int			run_simulation(t_management_data *mdata);
+void		set_log_message(t_management_data *md);
+int			run_simulation(t_management_data *md);
 void		*main_monitor(void *arg);
 void		*philo_action(void *arg);
 void		*death_monitor(void *arg);
-void		put_log(t_action_data *action_data, int log_num);
+void		put_log(t_action_data *ad, int log_num);
 long long	get_ms(struct timeval *time);
 int			finish_error(char *error_message);
-void		free_mdata(t_management_data *mdata);
-void		free_adata(t_action_data *adata);
+void		free_mdata(t_management_data *md);
+void		free_adata(t_action_data *ad);
 int			ft_isspace(char a);
 
 #endif

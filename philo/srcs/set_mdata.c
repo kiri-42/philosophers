@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/18 23:46:48 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 00:23:19 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,70 +24,70 @@ static void	set_opts(int ac, char **av, t_options *opts)
 		opts->num_of_must_eat = -1;
 }
 
-static int	set_treads(t_management_data *mdata)
+static int	set_treads(t_management_data *md)
 {
-	mdata->thread.philo_treads
-		= (pthread_t *)malloc(sizeof(pthread_t) * mdata->opts.num_of_philos);
-	if (mdata->thread.philo_treads == NULL)
+	md->thread.philo_treads
+		= (pthread_t *)malloc(sizeof(pthread_t) * md->opts.num_of_philos);
+	if (md->thread.philo_treads == NULL)
 		finish_error(MALLOC_ERROR);
-	mdata->thread.monitor_treads
-		= (pthread_t *)malloc(sizeof(pthread_t) * mdata->opts.num_of_philos);
-	if (mdata->thread.monitor_treads == NULL)
+	md->thread.monitor_treads
+		= (pthread_t *)malloc(sizeof(pthread_t) * md->opts.num_of_philos);
+	if (md->thread.monitor_treads == NULL)
 	{
-		free(mdata->thread.philo_treads);
+		free(md->thread.philo_treads);
 		return (finish_error(MALLOC_ERROR));
 	}
 	return (SUCCESS);
 }
 
-static int	set_mutex(t_management_data *mdata)
+static int	set_mutex(t_management_data *md)
 {
 	int	i;
 
-	mdata->mutex.fork_mutex
+	md->mutex.fork_mutex
 		= (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * \
-									mdata->opts.num_of_philos);
-	if (mdata->mutex.fork_mutex == NULL)
+									md->opts.num_of_philos);
+	if (md->mutex.fork_mutex == NULL)
 	{
-		free(mdata->thread.philo_treads);
-		free(mdata->thread.monitor_treads);
+		free(md->thread.philo_treads);
+		free(md->thread.monitor_treads);
 		return (finish_error(MALLOC_ERROR));
 	}
 	i = 0;
-	while (i <= mdata->opts.num_of_philos)
+	while (i <= md->opts.num_of_philos)
 	{
-		pthread_mutex_init(&mdata->mutex.fork_mutex[i], NULL);
+		pthread_mutex_init(&md->mutex.fork_mutex[i], NULL);
 		i++;
 	}
-	pthread_mutex_init(&mdata->mutex.philo_id_mutex, NULL);
-	pthread_mutex_init(&mdata->mutex.put_log_mutex, NULL);
-	pthread_mutex_init(&mdata->mutex.death_info_mutex, NULL);
+	pthread_mutex_init(&md->mutex.philo_id_mutex, NULL);
+	pthread_mutex_init(&md->mutex.put_log_mutex, NULL);
+	pthread_mutex_init(&md->mutex.death_info_mutex, NULL);
 	return (SUCCESS);
 }
 
-static int	set_philos(t_management_data *mdata)
+static int	set_philos(t_management_data *md)
 {
-	mdata->philos.philo_id = 0;
-	mdata->philos.death_flag = 0;
-	mdata->philos.eat_cnt
-		= (int *)malloc(sizeof(int) * mdata->opts.num_of_philos);
-	if (mdata->philos.eat_cnt == NULL)
+	md->philos.philo_id = 0;
+	md->philos.death_flag = 0;
+	md->philos.eat_cnt
+		= (int *)malloc(sizeof(int) * md->opts.num_of_philos);
+	if (md->philos.eat_cnt == NULL)
 	{
-		free(mdata->thread.philo_treads);
-		free(mdata->thread.monitor_treads);
-		free(mdata->mutex.fork_mutex);
+		free(md->thread.philo_treads);
+		free(md->thread.monitor_treads);
+		free(md->mutex.fork_mutex);
 		return (finish_error(MALLOC_ERROR));
 	}
 	return (SUCCESS);
 }
 
-int	set_mdata(int ac, char **av, t_management_data *mdata)
+int	set_mdata(int ac, char **av, t_management_data *md)
 {
-	set_opts(ac, av, &mdata->opts);
-	if (!(set_treads(mdata) == SUCCESS && \
-		set_mutex(mdata) == SUCCESS && \
-		set_philos(mdata) == SUCCESS))
+	set_opts(ac, av, &md->opts);
+	if (!(set_treads(md) == SUCCESS && \
+		set_mutex(md) == SUCCESS && \
+		set_philos(md) == SUCCESS))
 		return (ERROR);
-	set_log_message(mdata);
+	set_log_message(md);
 	return (SUCCESS);
 }

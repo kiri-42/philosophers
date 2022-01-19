@@ -1,56 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_death_monitor.c                               :+:      :+:    :+:   */
+/*   main_monitor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:24:15 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/18 06:02:00 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 00:25:55 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-static bool	check_eat_cnt(t_management_data *mdata)
+static bool	check_eat_cnt(t_management_data *md)
 {
 	int	i;
 
-	if (mdata->opts.num_of_must_eat == -1)
+	if (md->opts.num_of_must_eat == -1)
 		return (false);
 	i = 0;
-	while (i < mdata->opts.num_of_philos)
+	while (i < md->opts.num_of_philos)
 	{
-		if (mdata->philos.eat_cnt[i] < mdata->opts.num_of_must_eat)
+		if (md->philos.eat_cnt[i] < md->opts.num_of_must_eat)
 			return (false);
 		i++;
 	}
 	return (true);
 }
 
-static void	detach_all_treads(t_management_data *mdata)
+static void	detach_all_treads(t_management_data *md)
 {
 	int	i;
 
 	i = 0;
-	while (i < mdata->opts.num_of_philos)
+	while (i < md->opts.num_of_philos)
 	{
-		pthread_detach(mdata->thread.monitor_treads[i]);
-		pthread_detach(mdata->thread.philo_treads[i]);
+		pthread_detach(md->thread.monitor_treads[i]);
+		pthread_detach(md->thread.philo_treads[i]);
 		i++;
 	}
 }
 
 void	*main_monitor(void *arg)
 {
-	t_management_data	*mdata;
+	t_management_data	*md;
 
-	mdata = arg;
+	md = arg;
 	while (1)
 	{
-		if (mdata->philos.death_flag != LIFE || check_eat_cnt(mdata))
+		if (md->philos.death_flag != LIFE || check_eat_cnt(md))
 		{
-			detach_all_treads(mdata);
+			detach_all_treads(md);
 			break ;
 		}
 		usleep(200);

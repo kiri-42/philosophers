@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:35:06 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/18 23:47:43 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 00:22:02 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	t_management_data	mdata;
+	t_management_data	md;
 
 	// if (check_arg(ac, av))
 	// 	return (ERROR);
@@ -27,8 +27,8 @@ int	main(int ac, char **av)
 	// printf("%s %d\n", __FILE__, __LINE__);
 	// return (SUCCESS);
 	if (check_arg(ac, av) == SUCCESS && \
-		set_mdata(ac, av, &mdata) == SUCCESS && \
-		run_simulation(&mdata) == SUCCESS)
+		set_mdata(ac, av, &md) == SUCCESS && \
+		run_simulation(&md) == SUCCESS)
 		return (SUCCESS);
 	return (ERROR);
 }
