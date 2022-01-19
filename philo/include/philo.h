@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 18:47:13 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:55:47 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void		set_log_message(t_management_data *md);
 int			run_simulation(t_management_data *md);
 void		*main_monitor(void *arg);
 void		*philo_action(void *arg);
+void		set_action_data(t_management_data *md, t_action_data *ad);
 void		*death_monitor(void *arg);
 void		put_log(t_action_data *ad, int log_num);
 long long	get_ms(struct timeval *time);

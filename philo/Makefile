@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/19 18:47:54 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/19 18:56:20 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS = 			srcs/main.c \
 				srcs/run_simulation.c \
 				srcs/main_monitor.c \
 				srcs/philo_action.c \
+				srcs/set_action_data.c \
 				srcs/death_monitor.c \
 				srcs/put_log.c \
 				srcs/get_ms.c \
