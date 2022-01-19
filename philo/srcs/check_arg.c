@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:41:35 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/18 23:39:35 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:45:42 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ int	check_arg(int ac, char **av)
 			return (finish_error(ARG_ERROR));
 		ac_i++;
 	}
-	printf("%s %d\n", __FILE__, __LINE__);
 	return (SUCCESS);
 }

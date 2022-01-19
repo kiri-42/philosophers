@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 18:22:20 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:47:13 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ typedef struct s_action_data
 int			check_arg(int ac, char **av);
 bool		check_int(const char *str);
 long		ft_long_atoi(const char *str);
-int			set_mdata(int ac, char **av, t_management_data *md);
+int			set_management_data(int ac, char **av, t_management_data *md);
 int			ft_atoi(const char *str);
 void		set_log_message(t_management_data *md);
 int			run_simulation(t_management_data *md);

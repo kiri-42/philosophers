@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 16:37:44 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:47:13 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	set_philos(t_management_data *md)
 	return (SUCCESS);
 }
 
-int	set_mdata(int ac, char **av, t_management_data *md)
+int	set_management_data(int ac, char **av, t_management_data *md)
 {
 	set_opts(ac, av, &md->opts);
 	if (!(set_treads(md) == SUCCESS && \
