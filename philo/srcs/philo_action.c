@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:21:53 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 16:51:49 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 17:39:23 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ static void	create_monitor_treads(t_action_data *ad)
 	int	philo_id;
 
 	philo_id = ad->philo.philo_id;
-	// if (ad->philo.philo_id == 3)
-	// {
-	// 	*ad->is_error = ERROR;
-	// 	finish_error(THREAD_CREATE_ERROR);
-	// }
+	if (ad->philo.philo_id == 3)
+	{
+		*ad->is_error = ERROR;
+		finish_error(THREAD_CREATE_ERROR);
+		
+	}
 	if (pthread_create(&ad->thread->philo_treads[philo_id], \
 						NULL, death_monitor, ad) != 0)
 	{

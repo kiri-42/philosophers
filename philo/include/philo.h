@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 16:36:44 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:22:20 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ typedef struct s_mutex_data
 
 typedef struct s_philos_data
 {
-	int				philo_id;
-	int				death_flag;
-	int				death_time;
-	int				*eat_cnt;
+	int	philo_id;
+	int	death_flag;
+	int	death_time;
+	int	*eat_cnt;
 }	t_philos_data;
 
 typedef struct s_management_data
@@ -130,8 +130,8 @@ void		*death_monitor(void *arg);
 void		put_log(t_action_data *ad, int log_num);
 long long	get_ms(struct timeval *time);
 int			finish_error(char *error_message);
-void		free_mdata(t_management_data *md);
-void		free_adata(t_action_data *ad);
+void		free_management_data(t_management_data *md);
+void		free_action_data(t_action_data *ad);
 int			ft_isspace(char a);
 
 #endif

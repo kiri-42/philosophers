@@ -6,13 +6,13 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 23:42:05 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 00:31:43 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:22:20 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	free_mdata(t_management_data *md)
+void	free_management_data(t_management_data *md)
 {
 	free(md->thread.philo_treads);
 	free(md->thread.monitor_treads);
@@ -20,7 +20,7 @@ void	free_mdata(t_management_data *md)
 	free(md->philos.eat_cnt);
 }
 
-void	free_adata(t_action_data *ad)
+void	free_action_data(t_action_data *ad)
 {
 	free(ad->thread->philo_treads);
 	free(ad->thread->monitor_treads);
