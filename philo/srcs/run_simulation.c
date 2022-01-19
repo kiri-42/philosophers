@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 00:08:25 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 00:24:45 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:22:54 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@ int	run_simulation(t_management_data *md)
 		return (ERROR);
 	pthread_join(md->thread.main_monitor_tread, NULL);
 	free_mdata(md);
+	if (md->is_error)
+		return (ERROR);
 	return (SUCCESS);
 }

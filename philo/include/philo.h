@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 00:31:06 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:36:44 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ typedef struct s_management_data
 	t_mutex_data	mutex;
 	t_philos_data	philos;
 	t_log_message	log_message[5];
+	bool			is_error;
 }	t_management_data;
 
 typedef struct s_action_data
@@ -111,6 +112,7 @@ typedef struct s_action_data
 	t_mutex_data	*mutex;
 	t_philos_data	*philos;
 	t_log_message	*log_message;
+	bool			*is_error;
 }	t_action_data;
 
 /*  Function prototype */

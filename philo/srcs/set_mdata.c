@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 00:23:19 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:37:44 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	set_mutex(t_management_data *md)
 static int	set_philos(t_management_data *md)
 {
 	md->philos.philo_id = 0;
-	md->philos.death_flag = 0;
+	md->philos.death_flag = false;
 	md->philos.eat_cnt
 		= (int *)malloc(sizeof(int) * md->opts.num_of_philos);
 	if (md->philos.eat_cnt == NULL)
@@ -89,5 +89,6 @@ int	set_mdata(int ac, char **av, t_management_data *md)
 		set_philos(md) == SUCCESS))
 		return (ERROR);
 	set_log_message(md);
+	md->is_error = false;
 	return (SUCCESS);
 }

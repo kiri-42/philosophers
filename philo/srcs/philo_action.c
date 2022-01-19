@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:21:53 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 00:29:05 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:49:38 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@ static void	create_monitor_treads(t_action_data *ad)
 	int	philo_id;
 
 	philo_id = ad->philo.philo_id;
+	// if (ad->philo.philo_id == 3)
+	// {
+	// 	*ad->is_error = ERROR;
+	// 	finish_error(THREAD_CREATE_ERROR);
+	// }
 	if (pthread_create(&ad->thread->philo_treads[philo_id], \
 						NULL, death_monitor, ad) != 0)
 	{
-		free_adata(ad);
+		*ad->is_error = ERROR;
 		finish_error(THREAD_CREATE_ERROR);
 	}
 }
@@ -70,6 +75,7 @@ static void	set_adata(t_management_data *md, t_action_data *ad)
 	ad->mutex = &md->mutex;
 	ad->philos = &md->philos;
 	ad->log_message = md->log_message;
+	ad->is_error = &md->is_error;
 	pthread_mutex_lock(&ad->mutex->philo_id_mutex);
 	ad->philo.philo_id = ad->philos->philo_id++;
 	pthread_mutex_unlock(&ad->mutex->philo_id_mutex);
