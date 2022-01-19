@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:21:53 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 16:49:38 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:51:49 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ static void	create_monitor_treads(t_action_data *ad)
 						NULL, death_monitor, ad) != 0)
 	{
 		*ad->is_error = ERROR;
+		pthread_mutex_lock(&ad->mutex->put_log_mutex);
 		finish_error(THREAD_CREATE_ERROR);
+		pthread_mutex_unlock(&ad->mutex->put_log_mutex);
 	}
 }
 
