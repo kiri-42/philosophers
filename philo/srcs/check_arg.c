@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:41:35 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/21 04:56:59 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/21 05:02:47 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	check_arg(int ac, char **av)
 	ac_i = 1;
 	while (ac_i < (size_t)ac)
 	{
+		if (av[ac_i][0] == '0' && av[ac_i][1] == '0')
+			return (finish_error(ARG_ERROR));
 		char_i = 0;
 		while (av[ac_i][char_i] != '\0')
 		{
