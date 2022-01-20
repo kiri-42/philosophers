@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:21:53 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 18:55:53 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/20 18:47:13 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	eat_action(t_action_data *ad)
 	gettimeofday(&ad->philo.time, NULL);
 	put_log(ad, EATING);
 	ad->philo.time_ate = get_ms(&ad->philo.time);
-	usleep(ad->opts->time_to_eat * 1000);
+	msleep(ad->opts->time_to_eat);
 	pthread_mutex_unlock(&ad->mutex->fork_mutex[fork1]);
 	pthread_mutex_unlock(&ad->mutex->fork_mutex[fork2]);
 	ad->philos->eat_cnt[ad->philo.philo_id]++;
@@ -56,7 +56,7 @@ static void	sleep_action(t_action_data *ad)
 {
 	gettimeofday(&ad->philo.time, NULL);
 	put_log(ad, SLEEPING);
-	usleep(ad->opts->time_to_sleep * 1000);
+	msleep(ad->opts->time_to_sleep);
 }
 
 static void	think_action(t_action_data *ad)

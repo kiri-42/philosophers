@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 18:55:47 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/20 18:47:20 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void		set_action_data(t_management_data *md, t_action_data *ad);
 void		*death_monitor(void *arg);
 void		put_log(t_action_data *ad, int log_num);
 long long	get_ms(struct timeval *time);
+void		msleep(long long sleep_time);
 int			finish_error(char *error_message);
 void		free_management_data(t_management_data *md);
 void		free_action_data(t_action_data *ad);

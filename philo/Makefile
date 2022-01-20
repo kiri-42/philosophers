@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/19 18:56:20 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/20 18:47:17 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS = 			srcs/main.c \
 				srcs/death_monitor.c \
 				srcs/put_log.c \
 				srcs/get_ms.c \
+				srcs/msleep.c \
 				srcs/finish_error.c \
 				srcs/free.c \
 				srcs/ft_isspace.c
