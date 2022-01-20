@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:20:39 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/18 18:33:52 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/21 04:54:35 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ long	ft_long_atoi(const char *str)
 	return (num * sign);
 }
 
-bool	check_int(const char *str)
+bool	is_int(const char *str)
 {
 	long	num;
 

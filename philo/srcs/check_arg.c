@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:41:35 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 18:45:42 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/21 04:56:59 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_arg(int ac, char **av)
 				return (finish_error(ARG_ERROR));
 			char_i++;
 		}
-		if (!(check_int(av[ac_i])))
+		if (!(is_int(av[ac_i])))
 			return (finish_error(ARG_ERROR));
 		ac_i++;
 	}

@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/20 18:47:17 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/21 04:55:59 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = 			philo
 
 SRCS = 			srcs/main.c \
 				srcs/check_arg.c \
-				srcs/check_int.c \
+				srcs/is_int.c \
 				srcs/set_management_data.c \
 				srcs/ft_atoi.c \
 				srcs/set_log_message.c \
