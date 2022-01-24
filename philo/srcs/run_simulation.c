@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 00:08:25 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/21 04:53:08 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/24 15:51:12 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ int	run_simulation(t_management_data *md)
 		return (finish_died(md, 1));
 	}
 	if (md->opts.num_of_must_eat == 0)
+	{
+		free_management_data(md);
 		return (SUCCESS);
+	}
 	if (!(create_main_monitor_thread(md) == SUCCESS && \
 		create_philo_threads(md) == SUCCESS))
 		return (ERROR);
