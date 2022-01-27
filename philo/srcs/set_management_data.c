@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_mdata.c                                        :+:      :+:    :+:   */
+/*   set_management_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 18:47:13 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/27 22:56:42 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int	set_management_data(int ac, char **av, t_management_data *md)
 		return (ERROR);
 	set_log_message(md);
 	md->is_error = false;
+	md->is_finish_eating = false;
 	return (SUCCESS);
 }
