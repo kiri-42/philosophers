@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/27 23:23:51 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/27 23:42:33 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ typedef struct s_philo_data
 	int				philo_id;
 	struct timeval	time;
 	long long		time_ate;
-	// bool			is_death;
 }	t_philo_data;
 
 typedef struct s_thread_data
