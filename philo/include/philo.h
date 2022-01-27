@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/21 04:55:11 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/27 23:42:33 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ typedef struct s_philo_data
 	int				philo_id;
 	struct timeval	time;
 	long long		time_ate;
-	bool			is_death;
 }	t_philo_data;
 
 typedef struct s_thread_data
@@ -88,10 +87,10 @@ typedef struct s_mutex_data
 
 typedef struct s_philos_data
 {
-	int	philo_id;
-	int	death_flag;
-	int	death_time;
-	int	*eat_cnt;
+	int		philo_id;
+	bool	is_death;
+	int		death_time;
+	int		*eat_cnt;
 }	t_philos_data;
 
 typedef struct s_management_data
@@ -102,6 +101,7 @@ typedef struct s_management_data
 	t_philos_data	philos;
 	t_log_message	log_message[5];
 	bool			is_error;
+	bool			is_finish_eating;
 }	t_management_data;
 
 typedef struct s_action_data
@@ -113,6 +113,7 @@ typedef struct s_action_data
 	t_philos_data	*philos;
 	t_log_message	*log_message;
 	bool			*is_error;
+	bool			*is_finish_eating;
 }	t_action_data;
 
 /*  Function prototype */

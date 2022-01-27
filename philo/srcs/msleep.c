@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 18:14:00 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/20 18:51:01 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/27 23:47:12 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	msleep(long long sleep_time)
 		now_ms = get_ms(&time);
 		if (now_ms - start_ms > sleep_time)
 			break ;
-		usleep(200);
+		usleep(100);
 	}
 }

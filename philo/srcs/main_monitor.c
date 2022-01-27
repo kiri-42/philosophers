@@ -6,13 +6,13 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:24:15 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/19 18:44:51 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/28 00:33:19 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-static bool	check_eat_cnt(t_management_data *md)
+static bool	is_finish_eating(t_management_data *md)
 {
 	int	i;
 
@@ -48,7 +48,8 @@ void	*main_monitor(void *arg)
 	md = arg;
 	while (1)
 	{
-		if (md->philos.death_flag != LIFE || md->is_error || check_eat_cnt(md))
+		md->is_finish_eating = is_finish_eating(md);
+		if (md->philos.is_death || md->is_error || md->is_finish_eating)
 		{
 			detach_all_treads(md);
 			break ;
