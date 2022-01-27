@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 18:52:46 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/27 20:54:07 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/27 23:22:58 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	set_action_data(t_management_data *md, t_action_data *ad)
 	pthread_mutex_lock(&ad->mutex->philo_id_mutex);
 	ad->philo.philo_id = ad->philos->philo_id++;
 	pthread_mutex_unlock(&ad->mutex->philo_id_mutex);
-	ad->philo.is_death = LIFE;
+	// ad->philo.is_death = LIFE;
 	ad->philos->eat_cnt[ad->philo.philo_id] = 0;
 	if (ad->philo.philo_id % 2 == 1)
 		usleep(200);

@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/27 20:48:00 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/27 23:23:51 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct s_philo_data
 	int				philo_id;
 	struct timeval	time;
 	long long		time_ate;
-	bool			is_death;
+	// bool			is_death;
 }	t_philo_data;
 
 typedef struct s_thread_data
@@ -88,10 +88,10 @@ typedef struct s_mutex_data
 
 typedef struct s_philos_data
 {
-	int	philo_id;
-	int	death_flag;
-	int	death_time;
-	int	*eat_cnt;
+	int		philo_id;
+	bool	is_death;
+	int		death_time;
+	int		*eat_cnt;
 }	t_philos_data;
 
 typedef struct s_management_data

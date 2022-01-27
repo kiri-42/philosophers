@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:24:15 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/27 21:57:10 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/27 23:26:34 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ void	*main_monitor(void *arg)
 	while (1)
 	{
 		md->is_finish_eating = check_eat_cnt(md);
-		if (md->philos.death_flag != LIFE || md->is_error \
-			|| md->is_finish_eating)
+		if (md->philos.is_death || md->is_error || md->is_finish_eating)
 		{
 			detach_all_treads(md);
 			break ;

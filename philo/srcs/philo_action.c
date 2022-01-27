@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 01:21:53 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/20 18:47:13 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/27 23:31:10 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	*philo_action(void *arg)
 	t_management_data	*md;
 	t_action_data		ad;
 
+	// printf("%s %d\n", __FILE__, __LINE__);
 	md = (t_management_data *)arg;
 	set_action_data(md, &ad);
 	create_monitor_treads(&ad);
