@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 15:34:46 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/27 23:40:43 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/27 23:51:09 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ void	put_log(t_action_data *ad, int log_num)
 {
 	long long	time_ms;
 
-	pthread_mutex_lock(&ad->mutex->death_info_mutex);
 	if ((ad->philos->is_death || *ad->is_finish_eating || *ad->is_error) \
 		&& log_num != DIED)
 		return ;
-	pthread_mutex_unlock(&ad->mutex->death_info_mutex);
 	time_ms = get_ms(&ad->philo.time);
 	pthread_mutex_lock(&ad->mutex->put_log_mutex);
 	printf("%s", ad->log_message[log_num].color);
