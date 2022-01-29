@@ -6,7 +6,7 @@
 #    By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 15:19:14 by tkirihar          #+#    #+#              #
-#    Updated: 2022/01/21 04:55:59 by tkirihar         ###   ########.fr        #
+#    Updated: 2022/01/30 00:06:45 by tkirihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS = 			srcs/main.c \
 				srcs/get_ms.c \
 				srcs/msleep.c \
 				srcs/finish_error.c \
-				srcs/free.c \
+				srcs/free_all.c \
 				srcs/ft_isspace.c
 
 OBJS = 			$(SRCS:.c=.o)

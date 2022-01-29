@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:37:38 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/27 23:42:33 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/30 00:05:25 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,7 @@ void		put_log(t_action_data *ad, int log_num);
 long long	get_ms(struct timeval *time);
 void		msleep(long long sleep_time);
 int			finish_error(char *error_message);
-void		free_management_data(t_management_data *md);
-void		free_action_data(t_action_data *ad);
+void		free_all(t_management_data *md);
 int			ft_isspace(char a);
 
 #endif
