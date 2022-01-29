@@ -1,0 +1,13 @@
+# (philosophers)/
+*
+!*/
+!.gitignore
+
+# philo/
+!philo/Makefile
+
+# philo/srcs/
+!philo/srcs/*.c
+
+# philo/include/
+!philo/include/*.h
