@@ -6,7 +6,7 @@
 /*   By: tkirihar <tkirihar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 01:30:37 by tkirihar          #+#    #+#             */
-/*   Updated: 2022/01/27 23:27:13 by tkirihar         ###   ########.fr       */
+/*   Updated: 2022/01/29 23:56:52 by tkirihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	set_mutex(t_management_data *md)
 		return (finish_error(MALLOC_ERROR));
 	}
 	i = 0;
-	while (i <= md->opts.num_of_philos)
+	while (i < md->opts.num_of_philos)
 	{
 		pthread_mutex_init(&md->mutex.fork_mutex[i], NULL);
 		i++;
